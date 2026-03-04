@@ -1,0 +1,247 @@
+/* --- NBA COLOR THEME --- */
+:root {
+    --nba-blue: #1d428a;
+    --nba-red: #c8102e;
+    --nba-gold: #ffc72c;
+    --bg-color: #f4f7f9;
+    --card-bg: #ffffff;
+    --text-dark: #333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    line-height: 1.6;
+    padding-top: 80px; /* Space for fixed navbar */
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--nba-blue);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    border-bottom: 3px solid var(--nba-red); /* Added NBA red accent */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-logo {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.nav-logo span {
+    color: var(--nba-gold);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover {
+    color: var(--nba-gold);
+}
+
+/* Hamburger Menu */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: 0.4s;
+    border-radius: 2px;
+}
+
+/* Header Section */
+header {
+    text-align: center;
+    margin: 20px 0;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    color: var(--nba-blue);
+}
+
+#date-display {
+    color: #666;
+    font-weight: 500;
+}
+
+/* Game Grid */
+.score-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Game Card */
+.game-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #e0e0e0;
+}
+
+.game-status {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #eee;
+    display: inline-block;
+    width: 100%;
+}
+
+.game-status.live {
+    background: var(--nba-red);
+    color: white; /* Changed to white for better contrast on red */
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+.teams-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+}
+
+.team img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    margin-bottom: 8px;
+}
+
+.team-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.score {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-top: 5px;
+    color: var(--nba-blue); /* Added theme color to scores */
+}
+
+.vs {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #bbb;
+}
+
+.game-footer {
+    margin-top: 20px;
+}
+
+.stats-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--nba-blue);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.stats-btn:hover {
+    background-color: var(--nba-red); /* Turns red on hover */
+}
+
+.stats-btn:active {
+    transform: scale(0.98);
+}
+
+/* Mobile Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--nba-blue);
+        padding: 20px 0;
+        border-bottom: 3px solid var(--nba-gold); /* Gold accent on mobile menu */
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .score-container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+}
